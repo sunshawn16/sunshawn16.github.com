@@ -8,14 +8,11 @@ JMS 提供了:
 
 * 点对点模式 point to point queue:仅允许一对一，Java消息服务JMS的接收者和发送者之间不存在时间上的依赖关系。不论发送者发送消息时接收者是否在运行，接收者都可以提取信息。接收者对于成功处理的消息给出回执。
 
-![P2P][pic]
-[pic]:/Users/xiaosun/sunshawn16.github.com/source/_posts/images/P2Pqueue "P2P"
+![P2P](../assets/P2Pqueue.PNG)
 
 * 发布－订阅模式 publish/subcribe topic 模式:向某个话题订阅的客户程序只能收到那些在它订阅之后发布的消息。为了接收到消息，订阅者必须保持活动状态。因此，发布者和订阅者之间存在时间上的依赖关系。
 
-![Publish/subcribe][pic]
-[pic]:/Users/xiaosun/sunshawn16.github.com/source/_posts/images/publiser&subqueue "Publish/subcribe"
-
+![Publish/subcribe](../assets/publiser&subqueue.PNG)
 ##Why
 
 * 稳定性 — 组件失败对消息的影响程度远远小于组件间的直接调用，因为消息存储在队列中并一直留在那里，直到被适当地处理。消息处理同事务处理相似，因为消息处理是有保证的。
@@ -41,15 +38,22 @@ JMS 提供了:
 
 
 ## Implements&Comparsion
-![protocols and implements](../images/MessageQueue1.PNG)
+![protocols and implements](../assets/MessageQueue1.PNG)
 
 ###apache kafka
 >Apache Kafka is an open-source message broker project developed by the Apache Software Foundation written in Scala.  The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.
+分布式的消息结构，可以适应于大数据。
+* 存储应用日志
+* 预计模型可以
 
-* Written at LinkedIn in Scala
+
+* 通过添加一些商品服务器，为了水平扩展而设计
+* ti
 * Used by LinkedIn to offload processing of all page and other views
 * Defaults to using persistence, uses OS disk cache for hot data (has higher throughput then any of the above having persistence enabled)
-*Supports both on-line as off-line processing
+* Supports both on-line as off-line processing
+* 
+
 ###zeroMQ
 >zeroMQ 专门为了搞吞吐量量／低影响因素场景设计的轻量级的信息系统。它支持很多新的场景，但是你需要自己实现，还需要学习很多东西再来发消息。
 * The socket library that acts as a concurrency framework
