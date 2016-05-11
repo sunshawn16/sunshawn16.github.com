@@ -1,0 +1,321 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  
+  <title>MQ-comparision</title>
+  <meta name="author" content="John Doe">
+   <meta name="description" content="#spike－Message queue
+##feature
+
+decoupling
+redundancy:确保过程完成彩绘丢弃message
+scalability:因为和过程解耦，不必多写代码也更容易扩大规模。
+Elasticity &amp;amp; Spikability: 如果出现和大网站的链接，">
+  
+
+  <meta property="og:title" content="MQ-comparision"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="Hexo"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://7xs4ih.com1.z0.glb.clouddn.com/plnV7.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+  <div id="main">
+    <div class="behind">
+      <div class="back">
+        <a href="/" class="black-color"><i class="fa fa-times-circle-o"></i></a>
+      </div>
+      <div class="description">
+        &nbsp;
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        MQ-comparision
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-05-11T11:32:45.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-05-11
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/tech/">tech</a>
+
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/tags/message-queue/">message queue</a>
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <p>#spike－Message queue</p>
+<p>##feature</p>
+<ul>
+<li>decoupling</li>
+<li>redundancy:确保过程完成彩绘丢弃message</li>
+<li>scalability:因为和过程解耦，不必多写代码也更容易扩大规模。</li>
+<li>Elasticity &amp; Spikability: 如果出现和大网站的链接，不必担心大流量</li>
+<li>resiliency：恢复力，当结构坏了，不至于让整个系统坏掉，queue可以继续接受和保存message。</li>
+<li>delivery guarantees:redudancy 可以确保message 最终被处理掉，只要过程还在读取queue。每个message 都会被处理一次。</li>
+<li>ordering guarantees:大部分情况，处理信息的顺序是非常重要的。</li>
+<li>buffering：</li>
+<li>understanding data flow:有一个overall sense 来理解分布式系统。理解完成用户行为的时间，以及重要性。</li>
+<li>Asynchronous Communication:大部分时候你并不需要立刻处理信息。</li>
+<li>可以把你的应用分解成一些服务，使得他们分别工作。</li>
+</ul>
+<h2 id="Implements-amp-Comparsion"><a href="#Implements-amp-Comparsion" class="headerlink" title="Implements&amp;Comparsion"></a>Implements&amp;Comparsion</h2><p><img src="../assets/wee/MessageQueue1.PNG" alt="protocols and implements"></p>
+<h3 id="apache-kafka"><a href="#apache-kafka" class="headerlink" title="apache kafka"></a>apache kafka</h3><blockquote>
+<p>Apache Kafka is an open-source message broker project developed by the Apache Software Foundation written in Scala.  The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.</p>
+</blockquote>
+<p>分布式的消息结构，可以适应于大数据。</p>
+<ul>
+<li>存储应用日志</li>
+<li>预计模型可以</li>
+</ul>
+<ul>
+<li>通过添加一些商品服务器，为了水平扩展而设计</li>
+<li>Used by LinkedIn to offload processing of all page and other views</li>
+<li>Defaults to using persistence, uses OS disk cache for hot data (has higher throughput then any of the above having persistence enabled)</li>
+<li>Supports both on-line as off-line processing</li>
+<li></li>
+</ul>
+<p>###zeroMQ</p>
+<blockquote>
+<p>zeroMQ 专门为了搞吞吐量量／低影响因素场景设计的轻量级的信息系统。它支持很多新的场景，但是你需要自己实现，还需要学习很多东西再来发消息。</p>
+</blockquote>
+<ul>
+<li>The socket library that acts as a concurrency framework</li>
+<li>Faster than TCP, for clustered products and supercomputing</li>
+<li>Carries messages across inproc, IPC, TCP, and multicast</li>
+<li>Connect N-to-N via fanout, pubsub, pipeline, request-reply</li>
+<li>Asynch I/O for scalable multicore message-passing apps</li>
+</ul>
+<p>它着重在高效的传递信息而不是像RabbitMQ 一样作为一个完整的代理人来处理，存储，过滤和监控信息。是一个构建message queue的框架，而不是像其他MQ 一样提前打包messsages.<br>它没有”broker”，意味着，它不会有一个中心分发器来管理信息，就不是<br>一个“全服务”的message queue<br>ZeroMQ你可以做更多自己的控制，当你需要考虑更高的开销的时候，可以考虑RabbitMQ 和activeMQ</p>
+<h3 id="RabitMQ"><a href="#RabitMQ" class="headerlink" title="RabitMQ"></a>RabitMQ</h3><blockquote>
+<p>RabbitMQ is an open source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queuing Protocol (AMQP).<br>AMQP  协议应用最广泛的实现，采用broker 结构，意味着消息在发送给服务器之前都需要在中心节点处排队。容易部署和使用，但是因为核心节点的存在处理速度比较慢、不宜扩张。<br>RabbitMQ is built on Erlang, powered by AMQP and is used frequently with applications within Erlang, Python, PHP, Ruby, et al.<br>ActiveMQ is built in JAVA on JMS.</p>
+</blockquote>
+<ul>
+<li>RabbitMQ is a Message Queue Server in Erlang</li>
+<li>stores jobs in memory (message queue)</li>
+<li>runs on all major operating systems</li>
+<li>supports a huge number of developer platforms</li>
+<li>open source and commercially supported</li>
+</ul>
+<hr>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Parameter</th>
+<th>Kafka</th>
+<th>rabbitMQ</th>
+<th>zeroMq</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>custering\load balancing mechanism</td>
+<td>Available but producer has to know to which partition it is writing..</td>
+<td>Clustering Available, Queues clustering have to be handled separately.Clustering queue will be only for HA not for load balancing Feature</td>
+<td>Can be achieved by wriritng lots of customize code.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Replication among different nodes.</td>
+<td>available</td>
+<td>available</td>
+<td>Not automatic as there is no broker but can be coded. But lot of customization.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Fault tolerance feature. Turned around time in case of failure</td>
+<td>Zookeeper is required to manage it.</td>
+<td>Durable Queue, Durable Message and Clustering support. Another cluster node will take over but in case of queue it is different(connection has to be established with new node again by client.)</td>
+<td>Features available but not out of the box.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Supported libraries for go and other languages like dot net (CRM , ERP and CMS are on window stack).</td>
+<td>Available support for Go.</td>
+<td>Available in languages Java, Go, Python and .Net</td>
+<td>Go support available</td>
+</tr>
+<tr>
+<td></td>
+<td>security</td>
+<td>Not available in current version.</td>
+<td>Basic Level of Authentication like restricting users for read/write/configure(administration) exist.</td>
+<td>One has to built on top of it.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Interopretability in case Message broker is to be changed. (No binding)</td>
+<td>Rest interface plugis are available.</td>
+<td>AMQP 0.9 complaint. So changing one AMQP complaint broker with another one should not need a change in client code. Rest based plugin available.</td>
+<td>Specific client has to be written.</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Performance throughput (read/write).</td>
+<td>Very fast</td>
+<td>Moderate as per benchmarking data available. (I read in pivotal blog that it can receive and deliver more than one million messages per second.)</td>
+<td>very fast</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>Administration interface</td>
+<td>Very basic interface. Third party web console is available.Less features as compared to RabbitMq interface like User Management</td>
+<td>Available, Http based having basic functionality.</td>
+<td>Not available has to be built in.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<p>RabbitMQ是一个AMQP实现，传统的messaging queue系统实现，基于Erlang。老牌MQ产品了。AMQP协议更多用在企业系统内，对数据一致性、稳定性和可靠性要求很高的场景，对性能和吞吐量还在其次。</p>
+<p>Kafka是linkedin开源的MQ系统，主要特点是基于Pull的模式来处理消息消费，追求高吞吐量，一开始的目的就是用于日志收集和传输，0.8开始支持复制，不支持事务，适合产生大量数据的互联网服务的数据收集业务。</p>
+<p>ZeroMQ只是一个网络编程的Pattern库，将常见的网络请求形式（分组管理，链接管理，发布订阅等）模式化、组件化，简而言之socket之上、MQ之下。对于MQ来说，网络传输只是它的一部分，更多需要处理的是消息存储、路由、Broker服务发现和查找、事务、消费模式（ack、重投等）、集群服务等。</p>
+<hr>
+<p>Ref1: <a href="http://www.brokeragesdaytrading.com/article/3302104206/comparison-of-message-broker-rabbitmq-activemq-kafka-zeromq-/" title="comparsion Mqs" target="_blank" rel="external">comparsion Mqs</a></p>
+<p>Ref2:<a href="http://blog.csdn.net/linsongbin1/article/details/47781187" target="_blank" rel="external">Rabbit Q seems best</a></p>
+<p>Ref3:<a href="http://www.infoq.com/cn/articles/AMQP-RabbitMQ" target="_blank" rel="external">RabbitQ and AMQP</a></p>
+<p>Ref4:<a href="http://www.javaworld.com/article/3060078/big-data/big-data-messaging-with-kafka-part-1.html#tk.rss_all" target="_blank" rel="external">Big data messaging with Kafka</a></p>
+
+
+  </article>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = 'http://yoursite.com/2016/05/11/wee/micro-service-theory/MQspecificImpls/index.html';
+this.page.identifier = undefined;
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//yourdisqustoken.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="busuanzi center">
+页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+</div>
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+
+    <a class="backtop wow fadeIn animated" href="#top" >
+        <i class="fa fa-arrow-right"></i>
+    </a>
+    © XiaoSun 2015-2016
+    <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+    </a>
+
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// comments below to disable loading animation
+function revealOnScroll() {
+  var scrolled = $(window).scrollTop();
+  $(".excerpt, .index-title, .index-meta, p").each(function() {
+    var current = $(this),
+      height = $(window).outerHeight(),
+      offsetTop = current.offset().top;
+    (scrolled + height + 50 > offsetTop) ? current.addClass("animation"):'';
+  });
+}
+$(window).on("scroll", revealOnScroll);
+$(document).ready(revealOnScroll)
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+// back to top scripts
+$("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, 500);
+  return false;
+});
+</script>
+
+</body>
+</html>

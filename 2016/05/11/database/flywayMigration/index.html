@@ -1,0 +1,203 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="google-site-verification" content="" />
+  
+  <title>flyway - Migration Tool</title>
+  <meta name="author" content="John Doe">
+   <meta name="description" content="Why:How:
+用SQL 脚本记录所有schema 的改变
+用内部的一个名为SCHEMA_VERSION数据表格来记录不同的信 :e.g.数据何时,被谁操作,版本号码
+
+STEPS1.project’s Dependencies Set-upbuildscript {    repositorie">
+  
+
+  <meta property="og:title" content="flyway - Migration Tool"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:site_name" content="Hexo"/>
+ <meta property="og:image" content="undefined"/>
+  
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="http://7xs4ih.com1.z0.glb.clouddn.com/plnV7.min.css">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+</head>
+
+<body>
+  <div id="main">
+    <div class="behind">
+      <div class="back">
+        <a href="/" class="black-color"><i class="fa fa-times-circle-o"></i></a>
+      </div>
+      <div class="description">
+        &nbsp;
+      </div>
+    </div>
+    <div class="container">
+      
+
+  <article class="standard post">
+    <div class="title">
+      
+  
+    <h1 class="page-title center">
+        flyway - Migration Tool
+    </h1>
+  
+
+
+    </div>
+    <div class="meta center">
+      
+<time datetime="2016-05-11T11:32:10.000Z">
+  <i class="fa fa-calendar"></i>&nbsp;
+  2016-05-11
+</time>
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/categories/tech/">tech</a>
+
+
+
+
+    
+    &nbsp;
+    <i class="fa fa-tag"></i>&nbsp;
+    <a href="/tags/database/">database</a>
+
+
+    </div>
+    <hr>
+    <div class="picture-container">
+      
+    </div>
+    <h2 id="Why"><a href="#Why" class="headerlink" title="Why:"></a>Why:</h2><h2 id="How"><a href="#How" class="headerlink" title="How:"></a>How:</h2><ul>
+<li>用SQL 脚本记录所有schema 的改变</li>
+<li>用内部的一个名为SCHEMA_VERSION数据表格来记录不同的信 :e.g.数据何时,被谁操作,版本号码</li>
+</ul>
+<h3 id="STEPS"><a href="#STEPS" class="headerlink" title="STEPS"></a>STEPS</h3><p>1.project’s Dependencies Set-up<br>buildscript {<br>    repositories {<br>        mavenCentral()<br>    }<br>    dependencies {<br>        classpath(“org.flywaydb:flyway-gradle-plugin:4.0”)<br>    }</p>
+<pre><code>compile&apos;org.flywaydb:flyway-core:flyway&apos;
+</code></pre><p>clean.dependsOn flywayRepair<br>build.dependsOn flywayMigrate</p>
+<ol>
+<li><p>Configuring Flyway Server<br>add in gradle.properties<br>flyway.url =  jdbc:mysql://localhost:3306/db_user<br>flyway.user = apiuser<br>flyway.password = password</p>
+</li>
+<li><p>run: gradle flywayMigrate -i<br>you will see</p>
+</li>
+</ol>
+<p>PicFlyway:<a href="../assets/database/flywaySuccess.png">flyway</a></p>
+<p>attention: you could not inert any data manually, should drop table if you have.</p>
+<ul>
+<li>gradle flywayClean to  drop all objects</li>
+<li>gradle flywayInfo to prints details and status info about all migrations</li>
+<li>gradle flywayValidate to Validates the applied migrations against the ones available on the classpath.</li>
+</ul>
+<hr>
+<p>Ref1: <a href="https://flywaydb.org/documentation/gradle/" target="_blank" rel="external">flywaydb.org</a></p>
+<p>Ref2: <a href="http://blog.trifork.com/2014/12/09/integrating-flywaydb-in-a-spring-framework-application/" target="_blank" rel="external">INTEGRATING FLYWAY IN A SPRING FRAMEWORK APPLICATION</a></p>
+
+
+  </article>
+
+
+
+<div id="disqus_thread"></div>
+<script>
+
+var disqus_config = function () {
+this.page.url = 'http://yoursite.com/2016/05/11/database/flywayMigration/index.html';
+this.page.identifier = undefined;
+};
+
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+
+s.src = '//yourdisqustoken.disqus.com/embed.js';
+
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+</script>
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="busuanzi center">
+页阅读量:&nbsp;<span id="busuanzi_value_page_pv"></span>&nbsp;・&nbsp;
+站访问量:&nbsp;<span id="busuanzi_value_site_pv"></span>&nbsp;・&nbsp;
+站访客数:&nbsp;<span id="busuanzi_value_site_uv"></span>
+</div>
+
+
+
+    </div>
+  </div>
+  <footer class="page-footer"><div class="clearfix">
+</div>
+<div class="right-foot container">
+
+    <a class="backtop wow fadeIn animated" href="#top" >
+        <i class="fa fa-arrow-right"></i>
+    </a>
+    © XiaoSun 2015-2016
+    <a href="https://github.com/gaoryrt/hexo-theme-pln">
+        Theme Pln
+    </a>
+
+</div>
+<div class="clearfix">
+</div>
+</footer>
+  <script src="//cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+// comments below to disable loading animation
+function revealOnScroll() {
+  var scrolled = $(window).scrollTop();
+  $(".excerpt, .index-title, .index-meta, p").each(function() {
+    var current = $(this),
+      height = $(window).outerHeight(),
+      offsetTop = current.offset().top;
+    (scrolled + height + 50 > offsetTop) ? current.addClass("animation"):'';
+  });
+}
+$(window).on("scroll", revealOnScroll);
+$(document).ready(revealOnScroll)
+
+// disqus scripts
+
+
+// dropdown scripts
+$(".dropdown").click(function(event) {
+  var current = $(this);
+  event.stopPropagation();
+  $(current).children(".dropdown-content")[($(current).children(".dropdown-content").hasClass("open"))?'removeClass':'addClass']("open")
+});
+$(document).click(function(){
+    $(".dropdown-content").removeClass("open");
+})
+
+// back to top scripts
+$("a[href='#top']").click(function() {
+  $("html, body").animate({ scrollTop: 0 }, 500);
+  return false;
+});
+</script>
+
+</body>
+</html>
