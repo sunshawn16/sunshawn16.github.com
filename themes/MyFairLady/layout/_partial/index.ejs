@@ -1,0 +1,39 @@
+    <div class="blog-main">
+        <% page.posts.each(function(post){ %>
+          <div class="shadow">
+              <article class="article-main">
+                      <header class="article-header">
+                          <h1 itemprop="name">
+                          <a href="<%- url_for(post.path) %>" class="article-title"><%- post.title %></a>
+                      </h1>
+                      </header>
+                      <%if(post.noDate != "true"){%>
+                          <div class="article-meta">
+                              <div class="article-dateTime">
+                                  <a href="<%- url_for(post.path) %>" class="article-date">
+                                  <time datetime="<%= date(post.date, 'MMM DD YYYY') %>" itemprop="datePublished">
+                                      <%- date(post.date, 'MMM DD YYYY') %>
+                                  </time>
+                              </a>
+                              </div>
+                          </div>
+                          <% } %>
+                              <div class="article-inner">
+                                  <div class="article-entry" itemprop="articleBody">
+                                      <% if (post.excerpt && index){ %>
+                                      <%- post.excerpt %>
+                                      <% } else { %>
+                                      <%- post.content %>
+                                      <% } %>
+                                  </div>
+                                  <p class="article-more-link">
+                                      <a href="<%- url_for(post.path) %>#more">
+                                          <%= theme.excerpt_link %>>
+                                      </a>
+                                  </p>
+                              </div>
+              </article>
+            </div>
+            <% }) %>
+                <%- partial('post/paginator') %>
+    </div>

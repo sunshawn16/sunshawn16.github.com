@@ -1,0 +1,15 @@
+
+
+<%- partial('post/scroll-button') %>
+    <footer class="blog-footer">
+            <div id="footer-info" class="inner">
+                &copy;
+                <%=date(new Date(),'YYYY') %>
+                    <%= config.title %> Powered by
+                        <a href="#" target="_blank">
+                            <%= config.author %>
+                        </a>
+            </div>
+    </footer>
+    <script src="/js/setHeight.js"></script>
+    <script src="/js/toTop.js"></script>

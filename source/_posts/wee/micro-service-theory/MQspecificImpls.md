@@ -1,29 +1,13 @@
+---
+title: MQ-comparision
+date: 2016-05-11 19:32:45
+tags: message queue
+category: tech
+---
 #spike－Message queue
-##What
-在计算机科学中，消息队列（Message queue）是一种进程间通信或同一进程的不同线程间的通信方式。
-消息发送后，可以立即返回，由消息系统来确保消息的可靠传递，消息作为应用间的一种通信方式，能够有效的降低各模块间的**耦合性**，提升**分布式协作**的效率。
-
-***
-JMS 提供了:
-
-* 点对点模式 point to point queue:仅允许一对一，Java消息服务JMS的接收者和发送者之间不存在时间上的依赖关系。不论发送者发送消息时接收者是否在运行，接收者都可以提取信息。接收者对于成功处理的消息给出回执。
-
-![P2P](../assets/P2Pqueue.PNG)
-
-* 发布－订阅模式 publish/subcribe topic 模式:向某个话题订阅的客户程序只能收到那些在它订阅之后发布的消息。为了接收到消息，订阅者必须保持活动状态。因此，发布者和订阅者之间存在时间上的依赖关系。
-
-![Publish/subcribe](../assets/publiser&subqueue.PNG)
-##Why
-
-* 稳定性 — 组件失败对消息的影响程度远远小于组件间的直接调用，因为消息存储在队列中并一直留在那里，直到被适当地处理。消息处理同事务处理相似，因为消息处理是有保证的。
-* 消息优先级 — 更紧急或更重要的消息可在相对不重要的消息之前接收，因此可以为关键的应用程序保证足够的响应时间。
-* 脱机能力 — 发送消息时，它们可被发送到临时队列中并一直留在那里，直到被成功地传递。当因任何原因对所需队列的访问不可用时，用户可以继续执行操作。同时，其他操作可以继续进行，如同消息已经得到了处理一样，这是因为网络连接恢复时消息传递是有保证的。
-* 事务性消息处理 — 将多个相关消息耦合为单个事务，确保消息按顺序传递、只传递一次并且可以从它们的目标队列中被成功地检索。如果出现任何错误，将取消整个事务。
-* 安全性 — MessageQueue 组件基于的消息队列技术使用 Windows 安全来保护访问控制，提供审核，并对组件发送和接收的消息进行加密和验证。
-
-
 
 ##feature
+
 * decoupling
 * redundancy:确保过程完成彩绘丢弃message
 * scalability:因为和过程解耦，不必多写代码也更容易扩大规模。
@@ -38,24 +22,28 @@ JMS 提供了:
 
 
 ## Implements&Comparsion
-![protocols and implements](../assets/MessageQueue1.PNG)
 
-###apache kafka
->Apache Kafka is an open-source message broker project developed by the Apache Software Foundation written in Scala.  The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.
+![protocols and implements](../assets/wee/MessageQueue1.PNG)
+
+### apache kafka
+
+> Apache Kafka is an open-source message broker project developed by the Apache Software Foundation written in Scala.  The project aims to provide a unified, high-throughput, low-latency platform for handling real-time data feeds.
+
 分布式的消息结构，可以适应于大数据。
 * 存储应用日志
 * 预计模型可以
 
 
 * 通过添加一些商品服务器，为了水平扩展而设计
-* ti
 * Used by LinkedIn to offload processing of all page and other views
 * Defaults to using persistence, uses OS disk cache for hot data (has higher throughput then any of the above having persistence enabled)
 * Supports both on-line as off-line processing
 * 
 
 ###zeroMQ
->zeroMQ 专门为了搞吞吐量量／低影响因素场景设计的轻量级的信息系统。它支持很多新的场景，但是你需要自己实现，还需要学习很多东西再来发消息。
+
+> zeroMQ 专门为了搞吞吐量量／低影响因素场景设计的轻量级的信息系统。它支持很多新的场景，但是你需要自己实现，还需要学习很多东西再来发消息。
+
 * The socket library that acts as a concurrency framework
 * Faster than TCP, for clustered products and supercomputing
 * Carries messages across inproc, IPC, TCP, and multicast
@@ -66,8 +54,9 @@ JMS 提供了:
 它没有"broker"，意味着，它不会有一个中心分发器来管理信息，就不是
 一个“全服务”的message queue
 ZeroMQ你可以做更多自己的控制，当你需要考虑更高的开销的时候，可以考虑RabbitMQ 和activeMQ
-###RabitMQ
->RabbitMQ is an open source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queuing Protocol (AMQP).
+
+### RabitMQ
+> RabbitMQ is an open source message broker software (sometimes called message-oriented middleware) that implements the Advanced Message Queuing Protocol (AMQP).
 AMQP  协议应用最广泛的实现，采用broker 结构，意味着消息在发送给服务器之前都需要在中心节点处排队。容易部署和使用，但是因为核心节点的存在处理速度比较慢、不宜扩张。
 RabbitMQ is built on Erlang, powered by AMQP and is used frequently with applications within Erlang, Python, PHP, Ruby, et al.  
 ActiveMQ is built in JAVA on JMS.
@@ -91,6 +80,7 @@ ActiveMQ is built in JAVA on JMS.
 |Interopretability in case Message broker is to be changed. (No binding)|Rest interface plugis are available.|AMQP 0.9 complaint. So changing one AMQP complaint broker with another one should not need a change in client code. Rest based plugin available.|Specific client has to be written.|
 |Performance throughput (read/write).|Very fast|Moderate as per benchmarking data available. (I read in pivotal blog that it can receive and deliver more than one million messages per second.)|very fast|
 |Administration interface|Very basic interface. Third party web console is available.Less features as compared to RabbitMq interface like User Management|Available, Http based having basic functionality.|Not available has to be built in.|
+
 ***
 RabbitMQ是一个AMQP实现，传统的messaging queue系统实现，基于Erlang。老牌MQ产品了。AMQP协议更多用在企业系统内，对数据一致性、稳定性和可靠性要求很高的场景，对性能和吞吐量还在其次。
 

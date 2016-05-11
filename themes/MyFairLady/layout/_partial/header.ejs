@@ -1,0 +1,14 @@
+<header class="navHeader">
+    <span class="logo-link"><a href="<%- url_for() %>" ><%= theme.title %></a></span>
+        <% var first = true
+            for(var i in theme.menu) { %>
+                <% if (first) { %>
+        <ul class="nav nav-list">
+            <li class="nav-list-item"><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+            <% first = false %>
+                <% } else { %>
+            <li class="nav-list-item"><a href="<%- url_for(theme.menu[i]) %>"><%= i %></a></li>
+                <% } %>
+            <% } %>
+        </ul>
+</header>

@@ -1,0 +1,47 @@
+#title
+title: xspomele
+# Header
+menu:
+    home: /
+    about : /about
+    tags : /tags
+    timeline: /timeline
+    travel: /travel
+# title
+header:
+    aboutHeader: About
+    aboutData: Information
+    aboutInformation: Social
+    aboutTarget: Project
+    aboutFriendlink: Talent
+# author date
+data:
+    name: xspomelo
+    company: TW
+    position: developer
+# SubNav
+subnav:
+    gitHub: "https://github.com/sunshawn16/"
+    weiBo: "http://weibo.com/"
+# Project
+project:
+    hexo主题: https://github.com/yzzting/hexo-theme-MyFairLady
+# friendlink
+friendlink:
+
+
+# read more
+excerpt_link: read more
+
+# favicon
+favicon: http://7xp1k3.com1.z0.glb.clouddn.com/octocat-de-los-muertos.jpg
+
+# Baidu Analytics
+# baidu_analytics: c21994907883f37ffd80e13627dd4faa
+
+# Google Analytics
+google_analytics: UA-75314797-1
+
+# comments
+disqus: yzzting
+# duoshuo: yzzting

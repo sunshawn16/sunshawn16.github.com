@@ -63,11 +63,11 @@ pagination_dir: page
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: hexo-theme-pln
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: github
-  repository: https://github.com/sunshawn16/sunshawn16.github.com.git
-  branch: master 
+  type: git
+  repository: git@github.com:sunshawn16/sunshawn16.github.com.git
+  branch: master

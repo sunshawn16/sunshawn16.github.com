@@ -1,0 +1,92 @@
+.blog-main {
+    padding: 0 5%;
+}
+.shadow {
+    .hacks;
+    transition-duration: 0.3s;
+    border-bottom: 1px solid rgba(215, 65, 214, 0.09);
+    margin-bottom: 20px;
+    width: 100%;
+    &:hover {
+        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
+        -webkit-transform: scale(1.03);
+        transform: scale(1.03);
+    }
+}
+.article-main {
+    text-shadow: none;
+    overflow: hidden;
+    .article-header {
+        text-align: left;
+        margin-bottom: 1%;
+        a {
+            color: @article-entry-p;
+        }
+    }
+    .article-title {
+        font-size: @article-title-size - 5;
+        .hacks;
+        position: relative;
+        overflow: hidden;
+        &:before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: 50%;
+            right: 50%;
+            bottom: 0;
+            background: @blog-main-color;
+            height: 4px;
+            transition-property: left, right;
+            transition-duration: 0.3s;
+            transition-timing-function: ease-out;
+        }
+        &:active,
+        &:focus,
+        &:hover {
+            &:before {
+                left: 0;
+                right: 0;
+            }
+        }
+    }
+    @import "post/date";
+    .article-inner {
+        text-align: center;
+        @import "post/morelink";
+    }
+    .article-entry {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            text-align: left;
+            margin-bottom: 10px;
+            color: @title-a-color;
+            &::before {
+                content: "#";
+                color: @blog-main-color;
+            }
+            &:hover {}
+        }
+        p {
+            text-align: justify;
+            text-justify: distribute;
+            display: block;
+            font-family: 'Source Sans Pro', 'Helvetica Neue', Arial, sans-serif;
+            word-wrap: break-word;
+            line-height: @article-entry-p-lHeight + 2; //base
+            font-size: @article-entry-p-size - 2;
+            font-weight: 600;
+            letter-spacing: 0.12px;
+            color: @article-entry-p;
+            a {
+                color: @blog-main-color;
+            }
+        }
+    }
+}
+@import "post/paginator";
+@import "post/toTop";

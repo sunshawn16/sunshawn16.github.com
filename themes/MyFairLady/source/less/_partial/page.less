@@ -1,0 +1,59 @@
+header {
+    color: @blog-main-color;
+}
+.about-main {
+    margin-top: 3%;
+}
+.container {
+    font-family: cathsgbr;
+    font-weight: normal;
+    margin: 0 auto;
+    word-wrap: break-word;
+    text-align: center;
+    padding: 0% 20%;
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        text-align: left;
+        font-size: 28px;
+        transition-duration: 0.5s;
+        &:hover {
+            color: @article-entry-p;
+        }
+    }
+}
+.about-title {
+    font-size: @article-title-size - 8px;
+}
+.about-main {
+    font-size: @article-title-size - 13px;
+    > * {
+        padding-bottom: 20px;
+    }
+}
+.aboutInformation {
+    a {
+        color: @blog-main-color;
+        font-weight: 900;
+        &:hover {
+            color: @article-entry-p;
+        }
+    }
+}
+.aboutData {
+    padding-bottom: 20px;
+}
+.List {
+    text-align: left;
+    padding-left: 36px;
+    li {
+        margin: 11.2px 0;
+    }
+    a:hover {
+        border-bottom: 2px solid @blog-main-color;
+        font-weight: 800;
+    }
+}

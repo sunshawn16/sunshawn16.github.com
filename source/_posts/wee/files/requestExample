@@ -1,0 +1,10 @@
+## jsonForCreating
+{
+"name":"xiao test",
+"email":"xiao@test.com",
+"password":"xiao1",
+"gender":"F",
+"birth":"1990-01-06"
+}
+
+

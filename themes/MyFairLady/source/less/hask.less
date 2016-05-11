@@ -1,0 +1,23 @@
+.hardwareAccel() {
+	transform:translateZ(0);
+}
+
+.improveAntiAlias() {
+	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+}
+
+.fontSmooth() {
+	backface-visibility: hidden;
+}
+
+.forceBlockLevel() {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.hacks() {
+	.forceBlockLevel();
+	.hardwareAccel();
+	.improveAntiAlias();
+	.fontSmooth();
+}

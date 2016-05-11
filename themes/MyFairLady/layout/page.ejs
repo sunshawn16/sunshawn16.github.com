@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="about-main">
+        <header class="aboutHeader">
+            <h1 itemprop="name" class="about-title">
+                <%- theme.header.aboutHeader %>
+        </h1>
+        </header>
+        <div class="about-main">
+            <header class="aboutData">
+                <h2>
+                <%- theme.header.aboutData %>
+            </h2>
+            </header>
+            <div class="aboutName">
+                <ul class="List">
+                    <% for (var i in theme.data){ %>
+                        <li>
+                            <a href="javascript:;"><%=theme.data[i] %></a>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <header>
+                <h2><%- theme.header.aboutInformation %></h2>
+            </header>
+            <div class="aboutInformation">
+                <ul class="List">
+                    <% for (var i in theme.subnav){ %>
+                        <li>
+                            <%=i %>:
+                                <a href="<%=theme.subnav[i] %>">
+                                    <%=theme.subnav[i] %>
+                                </a>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <header>
+                <h2><%- theme.header.aboutTarget %></h2>
+            </header>
+            <div class="aboutTarget">
+                <ul class="List">
+                    <% for (var i in theme.project){ %>
+                        <li>
+                            <a href="<%=theme.project[i] %>">
+                                <%=i %>
+                            </a>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+            <header>
+                <h2><%- theme.header.aboutFriendlink %></h2>
+            </header>
+            <div class="aboutFriendLink">
+                <ul class="List">
+                    <% for (var i in theme.friendlink){ %>
+                        <li>
+                            <a href="<%=theme.friendlink[i] %>">
+                                <%=i %>
+                            </a>
+                        </li>
+                        <% } %>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- con -->

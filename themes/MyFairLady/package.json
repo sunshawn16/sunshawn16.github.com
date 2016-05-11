@@ -1,0 +1,16 @@
+{
+  "name": "hexo-site",
+  "version": "2.8.3",
+  "private": true,
+  "devDependencies": {
+    "autoprefixer": "^6.3.6",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "~3.1.0",
+    "gulp-less": "^3.0.5",
+    "gulp-minify-css": "^1.2.4",
+    "gulp-postcss": "^6.1.1"
+  },
+  "dependencies": {
+    "gulp-autoprefixer": "^3.1.0"
+  }
+}

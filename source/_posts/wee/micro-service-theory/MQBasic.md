@@ -1,4 +1,11 @@
-#What
+---
+title: MQ-basic
+date: 2016-05-11 19:32:43
+tags: message queue
+category: tech
+---
+
+# What
 在计算机科学中，消息队列（Message queue）是一种进程间通信或同一进程的不同线程间的通信方式。
 消息发送后，可以立即返回，由消息系统来确保消息的可靠传递，消息作为应用间的一种通信方式，能够有效的降低各模块间的**耦合性**，提升**分布式协作**的效率。
 
@@ -7,13 +14,11 @@ JMS 提供了:
 
 * 点对点模式 point to point queue:仅允许一对一，Java消息服务JMS的接收者和发送者之间不存在时间上的依赖关系。不论发送者发送消息时接收者是否在运行，接收者都可以提取信息。接收者对于成功处理的消息给出回执。
 
-![P2P][pic]
-[pic]:/Users/xiaosun/sunshawn16.github.com/source/_posts/images/P2Pqueue "P2P"
+![P2P](../assets/wee/P2Pqueue.PNG)
 
 * 发布－订阅模式 publish/subcribe topic 模式:向某个话题订阅的客户程序只能收到那些在它订阅之后发布的消息。为了接收到消息，订阅者必须保持活动状态。因此，发布者和订阅者之间存在时间上的依赖关系。
 
-![Publish/subcribe][pic]
-[pic]:/Users/xiaosun/sunshawn16.github.com/source/_posts/images/publiser&subqueue "Publish/subcribe"
+![Publish/subcribe](../assets/wee/publiser&subqueue.PNG)
 
 #Why
 
